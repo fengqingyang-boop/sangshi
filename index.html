@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丧尸生存 - FPS游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen" class="screen active">
+            <h1>丧尸生存</h1>
+            <p>在丧尸潮中生存下去！</p>
+            <div class="controls-info">
+                <h3>操作说明：</h3>
+                <p>鼠标移动 - 瞄准</p>
+                <p>鼠标左键 - 射击</p>
+                <p>鼠标滚轮 / 数字键 1-3 - 切换武器</p>
+                <p>WASD - 移动</p>
+                <p>空格键 - 跳跃</p>
+            </div>
+            <button id="start-btn">开始游戏</button>
+        </div>
+        
+        <div id="game-screen" class="screen">
+            <div id="crosshair">+</div>
+            <div id="hud">
+                <div id="health-bar-container">
+                    <div id="health-bar"></div>
+                    <div id="health-text">100/100</div>
+                </div>
+                <div id="weapon-info">
+                    <div id="weapon-name">左轮手枪</div>
+                    <div id="ammo-info">6/6</div>
+                </div>
+                <div id="score">击杀: 0</div>
+                <div id="wave">波次: 1</div>
+            </div>
+            <div id="weapon-selector">
+                <div class="weapon-slot active" data-weapon="0">1</div>
+                <div class="weapon-slot" data-weapon="1">2</div>
+                <div class="weapon-slot" data-weapon="2">3</div>
+            </div>
+            <div id="damage-overlay"></div>
+        </div>
+        
+        <div id="game-over-screen" class="screen">
+            <h1>游戏结束</h1>
+            <p id="final-score">击杀: 0</p>
+            <p id="survival-time">生存时间: 0秒</p>
+            <button id="restart-btn">重新开始</button>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/weapons.js"></script>
+    <script src="js/enemies.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
