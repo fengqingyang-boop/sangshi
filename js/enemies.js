@@ -48,7 +48,7 @@ class Zombie {
             metalness: 0.1
         });
         
-        const bodyGeometry = new THREE.CapsuleGeometry(0.25, 0.6, 4, 8);
+        const bodyGeometry = new THREE.CylinderGeometry(0.25, 0.25, 1.1, 8);
         const body = new THREE.Mesh(bodyGeometry, clothesMaterial);
         body.position.y = 0.9;
         group.add(body);
@@ -78,7 +78,7 @@ class Zombie {
         group.add(rightEye);
         this.bodyParts.rightEye = rightEye;
         
-        const armGeometry = new THREE.CapsuleGeometry(0.08, 0.4, 4, 6);
+        const armGeometry = new THREE.CylinderGeometry(0.06, 0.06, 0.55, 6);
         
         const leftArm = new THREE.Mesh(armGeometry, skinMaterial);
         leftArm.position.set(-0.35, 1.0, 0);
@@ -92,7 +92,7 @@ class Zombie {
         group.add(rightArm);
         this.bodyParts.rightArm = rightArm;
         
-        const legGeometry = new THREE.CapsuleGeometry(0.1, 0.4, 4, 6);
+        const legGeometry = new THREE.CylinderGeometry(0.07, 0.07, 0.6, 6);
         
         const leftLeg = new THREE.Mesh(legGeometry, clothesMaterial);
         leftLeg.position.set(-0.15, 0.4, 0);
@@ -268,11 +268,11 @@ class ZombieManager {
         this.zombiesKilled = 0;
         
         this.waveConfig = {
-            1: { maxZombies: 5, health: 60, speed: 2.5, damage: 8, spawnInterval: 4 },
-            2: { maxZombies: 8, health: 70, speed: 3, damage: 10, spawnInterval: 3.5 },
-            3: { maxZombies: 12, health: 80, speed: 3.5, damage: 12, spawnInterval: 3 },
-            4: { maxZombies: 15, health: 90, speed: 4, damage: 15, spawnInterval: 2.5 },
-            5: { maxZombies: 20, health: 100, speed: 4.5, damage: 18, spawnInterval: 2 }
+            1: { maxZombies: 5, health: 60, speed: 2.0, damage: 8, spawnInterval: 2 },
+            2: { maxZombies: 8, health: 70, speed: 2.5, damage: 10, spawnInterval: 1.8 },
+            3: { maxZombies: 12, health: 80, speed: 3.0, damage: 12, spawnInterval: 1.5 },
+            4: { maxZombies: 15, health: 90, speed: 3.5, damage: 15, spawnInterval: 1.2 },
+            5: { maxZombies: 20, health: 100, speed: 4.0, damage: 18, spawnInterval: 1 }
         };
         
         this.waveKillsRequired = {
@@ -297,8 +297,8 @@ class ZombieManager {
     }
 
     getSpawnPosition(playerPosition) {
-        const minDistance = 20;
-        const maxDistance = 40;
+        const minDistance = 10;
+        const maxDistance = 25;
         
         let attempts = 0;
         while (attempts < 50) {

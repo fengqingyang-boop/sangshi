@@ -23,8 +23,8 @@ class Game {
     }
 
     init() {
-        this.setupRenderer();
         this.setupScene();
+        this.setupRenderer();
         this.setupLights();
         this.createEnvironment();
         
@@ -39,10 +39,6 @@ class Game {
     }
 
     setupRenderer() {
-        this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x1a1a2e);
-        this.scene.fog = new THREE.Fog(0x1a1a2e, 10, 80);
-        
         this.camera = new THREE.PerspectiveCamera(
             75,
             window.innerWidth / window.innerHeight,
@@ -52,8 +48,7 @@ class Game {
         
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.renderer.shadowMap.enabled = false;
         
         document.getElementById('game-screen').appendChild(this.renderer.domElement);
     }
