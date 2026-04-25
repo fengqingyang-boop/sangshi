@@ -141,15 +141,11 @@ class Player {
         if (moveVector.length() > 0) {
             moveVector.normalize();
             
-            const angle = this.rotation.y;
-            const cos = Math.cos(angle);
-            const sin = Math.sin(angle);
+            const rotationY = this.rotation.y;
+            moveVector.applyAxisAngle(new THREE.Vector3(0, 1, 0), -rotationY);
             
-            const newX = moveVector.x * cos - moveVector.z * sin;
-            const newZ = moveVector.x * sin + moveVector.z * cos;
-            
-            this.position.x += newX * this.moveSpeed * deltaTime;
-            this.position.z += newZ * this.moveSpeed * deltaTime;
+            this.position.x += moveVector.x * this.moveSpeed * deltaTime;
+            this.position.z += moveVector.z * this.moveSpeed * deltaTime;
         }
         
         if (!this.isGrounded) {

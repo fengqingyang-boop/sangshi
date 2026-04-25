@@ -128,9 +128,10 @@ class Zombie {
         
         const distanceToPlayer = Utils.distance2D(this.position, playerPosition);
         
+        let attackResult = null;
         if (distanceToPlayer <= this.attackRange) {
             this.state = 'attack';
-            this.attack(playerPosition);
+            attackResult = this.attack(playerPosition);
         } else {
             this.state = 'chase';
             this.chasePlayer(deltaTime, playerPosition);
@@ -139,6 +140,8 @@ class Zombie {
         this.updateAnimation(deltaTime);
         this.model.position.copy(this.position);
         this.model.rotation.y = this.rotation;
+        
+        return attackResult;
     }
 
     chasePlayer(deltaTime, playerPosition) {
